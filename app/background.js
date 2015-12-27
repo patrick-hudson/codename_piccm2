@@ -78,7 +78,7 @@ app.on('ready', function() {
     settingsWindow.on('close', function() {
         mainWindowState.saveState(settingsWindow)
     });
-    var ret = globalShortcut.register('f9', function() {
+    var ret = globalShortcut.register('f8', function() {
         app.quit();
     });
 });
