@@ -1,5 +1,4 @@
 // Code goes here
-const remote = require('electron').remote;
 var jetpack = require("fs-jetpack");
 var IsThere = require("is-there");
 var Datastore = require('nedb');
@@ -17,13 +16,13 @@ var Datastore = require('nedb');
 })();
 
 function checkSettings(username, email){
-  var app = remote.app;
-  var userDataDir = app.getPath('userData');
-  filename = userDataDir + '/settings.json'
-  IsThere(filename, function (exists) {
-    exists ? readJSONSettings() : createJSONSettings();
-  });
-}
+  //var app = remote.app;
+  //var userDataDir = app.getPath('userData');
+  //filename = userDataDir + '/settings.json'
+  //IsThere(filename, function (exists) {
+    //exists ? readJSONSettings() : createJSONSettings();
+  //});
+//}
 function readJSONSettings(){
 
 }

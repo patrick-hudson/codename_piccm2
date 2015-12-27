@@ -1,0 +1,32 @@
+<div ng-controller="settingsController as vm">
+<form name="vm.userForm" ng-submit="vm.submit()" ng-class="{ 'has-error': userForm.email.$touched && userForm.email.$invalid }" novalidate>
+
+  <div class="form-group" ng-class="{ 'has-error': vm.userForm.name.$touched && vm.userForm.name.$invalid }">
+    <label>Name</label>
+    <input type="text" name="name" class="form-control" ng-model="vm.name" ng-minlength="5" ng-maxlength="10" required>
+    <div class="help-block" ng-messages="vm.userForm.name.$error" ng-if="vm.userForm.name.$touched">
+      <p ng-message="minlength">Your name is too short.</p>
+      <p ng-message="maxlength">Your name is too long.</p>
+      <p ng-message="required">Your name is required.</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" name="email" class="form-control" ng-model="vm.email" required>
+    <div class="help-block" ng-messages="vm.userForm.email.$error" ng-if="vm.userForm.email.$touched">
+      <div ng-messages-include="messages.html"></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-danger">Submit</button>
+  </div>
+</div>
+
+</form>
+
+<div ng-controller="settingsKeybindController as kb">
+<span id="someid" contenteditable="true"><input ng-keydown="kb.keyPress($event);" ng-keyup="kb.keyRelease($event);" disabled></span>
+</div>
+</div>

@@ -11,6 +11,7 @@
     "angular-route": "^1.4.8",
     "fs-jetpack": "^0.7.0",
     "handlebars": "^4.0.5",
-    "is-there": "^4.3.0"
+    "is-there": "^4.3.0",
+    "keycode": "^2.1.0"
   }
 }
