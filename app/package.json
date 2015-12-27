@@ -1,0 +1,16 @@
+{
+  "name": "codename_piccm2",
+  "productName": "Codename: Pic.cm v2",
+  "identifier": "com.hudson.codename.piccm2",
+  "description": "Things, Stuff, you know the drill",
+  "version": "0.0.0",
+  "author": "Patrick Hudosn",
+  "main": "background.js",
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-route": "^1.4.8",
+    "fs-jetpack": "^0.7.0",
+    "handlebars": "^4.0.5",
+    "is-there": "^4.3.0"
+  }
+}

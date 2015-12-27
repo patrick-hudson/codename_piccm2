@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css" />
+    <link href="./stylesheets/main.css" rel="stylesheet" type="text/css">
+    <link href="vendor/photon/photon.css" rel="stylesheet" type="text/css">
+    <script src="vendor/electron_boilerplate/context_menu.js"></script>
+    <script src="vendor/electron_boilerplate/external_links.js"></script>
+
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+            <h1 class="title">Pic.cm</h1>
+        </header>
+        <div class="window-content">
+            <div class="window-content">
+                <div class="pane-group">
+                    <div class="pane pane-sm sidebar">
+                        <nav class="nav-group">
+                            <h5 class="nav-group-title">Favorites</h5>
+                            <span class="nav-group-item">
+                                <span class="icon icon-home"></span>
+                                connors
+                            </span>
+                            <span class="nav-group-item active">
+                                <span class="icon icon-light-up"></span>
+                                Home
+                            </span>
+                            <span class="nav-group-item active">
+                                <span class="icon icon-light-up"></span>
+                                Settings
+                            </span>
+                        </nav>
+                    </div>
+                    <!-- Content -->
+                    <div class="pane">
+                        <div id="content-wrapper">
+                            <div class="mui--appbar-height"></div>
+                            <div class="mui-container-fluid">
+                                <br>
+                                {{#block "body"}}
+                                {{/block}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="./bower_components/angular/angular.js"></script>
+                <script src="./bower_components/angular-route/angular-route.js"></script>
+                <script src="./bower_components/angular-animate/angular-animate.js"></script>
+                <script src="./bower_components/angular-aria/angular-aria.js"></script>
+                <script src="./bower_components/angular-material/angular-material.js"></script>
+                <script src="./scripts/app.js"></script>
+                <script src="./scripts/settings/settingsService.js"></script>
+                <script src="./scripts/settings/settingsController.js"></script>
+            </div>
+</body>
+
+</html>

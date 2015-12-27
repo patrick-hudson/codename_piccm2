@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="../app/bower_components/angular-material/angular-material.css" />
+    <link href="./stylesheets/main.css" rel="stylesheet" type="text/css">
+    <link href="vendor/photon/photon.css" rel="stylesheet" type="text/css">
+    <script src="vendor/electron_boilerplate/context_menu.js"></script>
+    <script src="vendor/electron_boilerplate/external_links.js"></script>
+    <script>
+        var remote = require('remote');
+        //var browserwindow = require('browserwindow')
+        const BrowserWindow = remote.BrowserWindow;
+        var Menu = remote.require('menu');
+        var app = remote.app;
+        var template = [{
+            label: 'Electron',
+            submenu: [{
+                label: 'About Electron',
+                selector: 'orderFrontStandardAboutPanel:'
+            }, {
+                type: 'separator'
+            }, {
+                label: 'Services',
+                submenu: []
+            }, {
+                type: 'separator'
+            }, {
+                label: 'Hide Electron',
+                accelerator: 'Command+H',
+                selector: 'hide:'
+            }, {
+                label: 'Hide Others',
+                accelerator: 'Command+Shift+H',
+                selector: 'hideOtherApplications:'
+            }, {
+                label: 'Show All',
+                selector: 'unhideAllApplications:'
+            }, {
+                type: 'separator'
+            }, {
+                label: 'Quit',
+                accelerator: 'Command+Q',
+                click: function() {
+                    app.quit();
+                }
+            }, ]
+        }, {
+            label: 'Edit',
+            submenu: [{
+                label: 'Undo',
+                accelerator: 'Command+Z',
+                selector: 'undo:'
+            }, {
+                label: 'Redo',
+                accelerator: 'Shift+Command+Z',
+                selector: 'redo:'
+            }, {
+                type: 'separator'
+            }, {
+                label: 'Cut',
+                accelerator: 'Command+X',
+                selector: 'cut:'
+            }, {
+                label: 'Copy',
+                accelerator: 'Command+C',
+                selector: 'copy:'
+            }, {
+                label: 'Paste',
+                accelerator: 'Command+V',
+                selector: 'paste:'
+            }, {
+                label: 'Select All',
+                accelerator: 'Command+A',
+                selector: 'selectAll:'
+            }, ]
+        },
+        {
+        label: 'Development',
+        submenu: [
+          {
+            label: 'Reload',
+            accelerator: 'CmdOrCtrl+R',
+            click: function (item, focusedWindow) {
+                if(focusedWindow){
+                  focusedWindow.webContents.reloadIgnoringCache();
+                }
+            }
+        }]
+      },
+
+        {
+            label: 'Window',
+            submenu: [{
+                label: 'Minimize',
+                accelerator: 'Command+M',
+                selector: 'performMiniaturize:'
+            }, {
+                label: 'Close',
+                accelerator: 'Command+W',
+                selector: 'performClose:'
+            }, {
+                type: 'separator'
+            }, {
+                label: 'Bring All to Front',
+                selector: 'arrangeInFront:'
+            }, ]
+        },
+        {
+            label: 'Help',
+            submenu: []
+        }, ];
+        menu = Menu.buildFromTemplate(template);
+
+        Menu.setApplicationMenu(menu);
+    </script>
+
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+            <h1 class="title">Pic.cm</h1>
+        </header>
+        <div class="window-content">
+            <div class="window-content">
+                <div class="pane-group">
+                    <div class="pane pane-sm sidebar">
+                        <nav class="nav-group">
+                            <h5 class="nav-group-title">Favorites</h5>
+                            <span class="nav-group-item active">
+                                <span class="icon icon-home active"></span>
+                                Home
+                            </span>
+                            <span class="nav-group-item" id="settings">
+                                <span class="icon icon-light-up"></span>
+                                Settings
+                            </span>
+                            <span class="nav-group-item">
+                                <span class="icon icon-light-up"></span>
+                                History
+                            </span>
+                        </nav>
+                    </div>
+                    <!-- Content -->
+                    <div class="pane">
+                        <div id="content-wrapper">
+                            <div class="mui--appbar-height"></div>
+                            <div class="mui-container-fluid">
+                                <br>
+
+                                <script>
+                                    window.$ = window.jQuery = require('./bower_components/jquery/dist/jquery.min.js');
+                                    $(document).ready(function() {
+                                        $('#settings').on('click', function() {
+                                            const ipcRenderer = require('electron').ipcRenderer;
+                                            ipcRenderer.send('openSettings');
+                                        });
+                                    });
+                                </script>
+                                <h1 id="greet"></h1>
+                                <p class="subtitle">
+                                    Welcome to <a href="http://electron.atom.io" class="js-external-link">Electron</a> app running on this magnificent
+                                    <strong id="platform-info"></strong> machine.
+                                    <a href="#" onclick="openSettings()">Contact</a></li>
+                                </p>
+                                <p class="subtitle">
+                                    You are in
+                                    <strong id="env-name"></strong> environment.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="./bower_components/angular/angular.js"></script>
+            <script src="./bower_components/angular-route/angular-route.js"></script>
+            <script src="./bower_components/angular-animate/angular-animate.js"></script>
+            <script src="./bower_components/angular-aria/angular-aria.js"></script>
+            <script src="./bower_components/angular-material/angular-material.js"></script>
+            <script src="./scripts/app.js"></script>
+            <script src="./scripts/settings/settingsService.js"></script>
+            <script src="./scripts/settings/settingsController.js"></script>
+
+
+</body>
+
+</html>
