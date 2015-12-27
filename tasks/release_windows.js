@@ -32,6 +32,7 @@ var cleanupRuntime = function () {
 };
 
 var packageBuiltApp = function () {
+    console.log('asar');
     var deferred = Q.defer();
 
     asar.createPackage(projectDir.path('build'), readyAppDir.path('resources/app.asar'), function() {
@@ -64,10 +65,12 @@ var finalize = function () {
 };
 
 var renameApp = function () {
+    console.log('rename');
     return readyAppDir.renameAsync('electron.exe', manifest.productName + '.exe');
 };
 
 var createInstaller = function () {
+  console.log('create installer');
     var deferred = Q.defer();
 
     var finalPackageName = manifest.name + '_' + manifest.version + '.exe';
