@@ -18,6 +18,7 @@ var init = function () {
     tmpDir = projectDir.dir('./tmp', { empty: true });
     releasesDir = projectDir.dir('./releases');
     manifest = projectDir.read('app/package.json', 'json');
+    console.log(manifest);
     readyAppDir = tmpDir.cwd(manifest.name);
 
     return Q();
